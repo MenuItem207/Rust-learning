@@ -1,4 +1,4 @@
-use std::io::{stdin, stdout, BufRead};
+use std::io::BufRead;
 
 fn main() {
     print!("Enter a number: ");
