@@ -7,9 +7,10 @@ Beginner
 ***
 **
 *
-4. Write a program that print out the following, user will input the bottom number: *
+4. Write a program that print out the following, user will input the bottom number:
+*
 **
-** *
+***
 ****
 ******
 5. Write a program that pring out the following triangle, the user will input the bottom number:
