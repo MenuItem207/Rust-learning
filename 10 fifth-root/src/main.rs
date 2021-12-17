@@ -48,6 +48,9 @@ fn main() {
         "the fifth root of the sum of squares of the first 100 odd numbers is: {}",
         nth_root(5, sum_of_odd_squares as f32)
     );
+    println!("the 3rd root of the 25 is: {}", nth_root(3, 25.0)); // wrong
+    println!("the sixth root of 37 is: {}", nth_root(6, 37.0)); // right
+    println!("the sixth root of 37 is: {}", nth_root(3, 28.0)); // right
 }
 
 // calculates the nth root of a number num
@@ -55,7 +58,7 @@ fn nth_root(n: i32, num: f32) -> f32 {
     const MAX_DECIMAL_POINTS: i32 = 8;
     let mut current_point: i32 = 1; // the current decimal point 10^current_point
     let mut current_num: f32 = 1.0;
-    // the current closest root
+    // the current closest root, only the int part
     let mut current_root: f32 = loop {
         let result_fifth = nth!(n, current_num);
         if result_fifth > num {
@@ -74,9 +77,7 @@ fn nth_root(n: i32, num: f32) -> f32 {
             break current_root;
         } else {
             // iterate from 0 to 9 to find closest int at decimal point 10^current_point
-            println!("current_point: {}", current_point);
             let current_divider: f32 = nth!(current_point, 10) as f32;
-            println!("current_multiplier: {}", current_divider);
             for i in 0..10 {
                 let sum: f32 = current_root + (i as f32 / current_divider);
                 let result_nth: f32 = nth!(n, sum);
@@ -88,7 +89,6 @@ fn nth_root(n: i32, num: f32) -> f32 {
                     break;
                 }
             }
-            println!("nothing");
             current_point += 1;
         }
     }
